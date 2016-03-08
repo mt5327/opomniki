@@ -8,11 +8,25 @@ window.addEventListener('load', function() {
 	
 	document.querySelector("#prijavniGumb").addEventListener("click", potrdiPrijavo);
 		
+	var dodajOpomnik = function() {
+		var naziv_opomnika = document.querySelector("#naziv_opomnika").value;
+		var cas_opomnika = document.querySelector("#cas_opomnika").value;
+		document.querySelector("#naziv").innerHTML = naziv_opomnika;
+		document.querySelector("#cas").innerHTML = parseInt(cas_opomnika);
+		document.getElementById("opomnik").innerHTML += 
+		<div class='opomnik'>
+            <div class='naziv_opomnika'>NAZIV_OPOMNIKA</div>
+            <div class='cas_opomnika'> Opomnik cez <span>CAS_OPOMNIKA</span> sekund.</div>
+		</div>
+	}
+	
+	document.querySelector("#dodajGumb").addEventListener("click", dodajOpomnik);
+
 	//Posodobi opomnike
 	var posodobiOpomnike = function() {
 		var opomniki = document.querySelectorAll(".opomnik");
 		
-		for (i = 0; i < opomniki.length; i++) {
+		for (var i = 0; i < opomniki.length; i++) {
 			var opomnik = opomniki[i];
 			var casovnik = opomnik.querySelector("span");
 			var cas = parseInt(casovnik.innerHTML);
